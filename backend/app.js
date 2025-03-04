@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 app.use(cors()); // use to communicate with frontend
+app.use(express.json());
 const port = 8080;
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/Zidio_Project";
