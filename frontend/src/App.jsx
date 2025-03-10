@@ -12,10 +12,12 @@
 // export default App
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import axios from 'axios';  // connect frontend to backend
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
+import Task from "./pages/Task";
+import CompletedTasks from "./pages/CompletedTasks";
+
 
 
 const App = () => {
@@ -26,6 +28,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/task" element={<Task />} />
+        <Route path="/completedtasks" element={<CompletedTasks />} />
+     
     
       </Routes>
     </Router>
@@ -33,5 +38,4 @@ const App = () => {
 };
 
 export default App;
-
 
