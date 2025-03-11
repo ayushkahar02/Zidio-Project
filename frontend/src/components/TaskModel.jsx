@@ -1,71 +1,19 @@
-// import React, { useState } from "react";
-// import { FaPlus } from "react-icons/fa";
-
-// const TaskPage = () => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   return (
-//     <div className="p-6">
-     
-
-//       {setIsModalOpen && (
-//         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-//           <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
-//             <h2 className="text-xl font-bold mb-4">ADD TASK</h2>
-//             <input
-//               type="text"
-//               placeholder="Task Title"
-//               className="w-full p-2 border rounded mb-4"
-//             />
-//             <select className="w-full p-2 border rounded mb-4">
-//               <option>New User</option>
-//               <option>John Doe</option>
-//             </select>
-//             <div className="flex justify-between mb-4">
-//               <select className="w-1/2 p-2 border rounded">
-//                 <option>TODO</option>
-//                 <option>In Progress</option>
-//                 <option>Completed</option>
-//               </select>
-//               <input
-//                 type="date"
-//                 className="w-1/2 p-2 border rounded ml-2"
-//               />
-//             </div>
-//             <select className="w-full p-2 border rounded mb-4">
-//               <option>NORMAL</option>
-//               <option>HIGH</option>
-//               <option>LOW</option>
-//             </select>
-//             <div className="flex justify-end gap-4">
-//               <button
-//                 className="px-4 py-2 border rounded"
-//                 onClick={() => setIsModalOpen(false)}
-//               >
-//                 Cancel
-//               </button>
-//               <button className="px-4 py-2 bg-blue-600 text-white rounded">
-//                 Submit
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default TaskPage;
-
-
-
 import React, { useState } from "react";
 
 const CreateTaskModal = ({ onClose, onSubmit }) => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [priority, setPriority] = useState("NORMAL");
-  const [progress, setProgress] = useState("Inprogress");
+  const [progress, setProgress] = useState("Select");
+
+  // Function to get the current time in HH:MM AM/PM format
+  const getCurrentTime = () => {
+    return new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -76,15 +24,14 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
       return;
     }
 
-    // Create a new task object
+    // Create a new task object with time
     const newTask = {
       id: Date.now(),
       title: taskTitle,
       progress: progress,
       date: taskDate,
+      time: getCurrentTime(), // Automatically add the current time
       priority: priority.toUpperCase(),
-     
-
     };
 
     // Send data to parent component
@@ -95,57 +42,89 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
     setTaskDate("");
     setPriority("NORMAL");
     setProgress("InProgress");
-
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[black] border border-[#8357DA] bg-opacity-50 ml-[650px] mt-[200px]">
-      <div className="bg-white p-6 rounded shadow-lg w-96 h-[540px] w-[450px]">
-        <h2 className="text-xl font-semibold ml-[170px] mb-4 text-[#8357DA]">Add Task</h2>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded shadow-lg w-[450px]">
         
-        <form onSubmit={handleSubmit} className="flex flex-col ml-[50px] ">
-        <label className="text-[#8357DA]">Task Title:</label>
-          <input
-            type="text"
-            placeholder="Task Title"
-            value={taskTitle}
-            onChange={(e) => setTaskTitle(e.target.value)}
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
-          />
+        {/* Modal Header */}
+        <h2 className="text-xl font-semibold text-center mb-6 text-[#8357DA]">
+          Add Task
+        </h2>
 
-            <label className="text-[#8357DA] mt-[20px]">Progress:</label>
-           
-            <select
-           value={progress} 
-           onChange={(e) => setProgress(e.target.value)}
-           className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]">
-                <option Value="InProgress">In Progress</option>
-                <option value="complete">Completed</option>
-              </select>
-          
-              <label className="text-[#8357DA] mt-[20px]">Priority:</label>
-          <select
-            value={priority}
-            onChange={(e) => setPriority(e.target.value)}
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
-          >
-            <option value="NORMAL">Normal</option>
-            <option value="MEDIUM">Medium</option>
-            <option value="HIGH">High</option>
-          </select>
+        {/* Task Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
 
-          <label className="text-[#8357DA] mt-[20px]">date:</label>
-          <input
-            type="date"
-            value={taskDate}
-            onChange={(e) => setTaskDate(e.target.value)}
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
-          />
-
-          <div className="flex mt-[50px] ml-[125px]">
-            <button type="button" onClick={onClose} className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[100px] h-[45px]  hover:bg-[#8357DA] ">Cancel</button>
-            <button type="submit" className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[100px] h-[45px]  hover:bg-[#8357DA]  ml-[25px]">Submit</button>
+          {/* Task Title */}
+          <div>
+            <label className="text-[#8357DA] font-medium">Task Title:</label>
+            <input
+              type="text"
+              placeholder="Enter Task Title"
+              value={taskTitle}
+              onChange={(e) => setTaskTitle(e.target.value)}
+              className="border p-2 w-full bg-[#e0e0eb] rounded text-[#000000]"
+            />
           </div>
+
+          {/* Progress Selection */}
+          <div>
+            <label className="text-[#8357DA] font-medium">Progress:</label>
+            <select
+              value={progress} 
+              onChange={(e) => setProgress(e.target.value)}
+              className="border p-2 w-full bg-[#e0e0eb] rounded text-[#000000]"
+            >
+              <option className="text-[#807d7d]" >Select</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+
+          {/* Priority Selection */}
+          <div>
+            <label className="text-[#8357DA] font-medium">Priority:</label>
+            <select
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              className="border p-2 w-full bg-[#e0e0eb] rounded text-[#000000]"
+            >
+              <option value="NORMAL">Normal</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+            </select>
+          </div>
+
+          {/* Task Date */}
+          <div>
+            <label className="text-[#8357DA] font-medium">Date:</label>
+            <input
+              type="date"
+              value={taskDate}
+              onChange={(e) => setTaskDate(e.target.value)}
+              className="border p-2 w-full bg-[#e0e0eb] rounded text-[#000000]"
+            />
+          </div>
+
+          {/* Buttons Section */}
+          <div className="flex justify-center space-x-4 mt-4">
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-[#8357DA] text-white hover:text-white border border-[#8357DA] py-2 px-6 rounded px-4 mt-[6px] cursor-pointer "
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              className="bg-[#8357DA] text-white hover:text-white border border-[#8357DA] py-2 px-6 rounded ml-[2rem] px-4 mt-[6px] cursor-pointer"
+            >
+              Submit
+            </button>
+          </div>
+
         </form>
       </div>
     </div>
@@ -153,4 +132,3 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
 };
 
 export default CreateTaskModal;
-
