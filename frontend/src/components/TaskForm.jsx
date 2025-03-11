@@ -1,59 +1,52 @@
-
-
 import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const TaskForm = ({ onSubmit }) => {
-  const [task, setTask] = useState({ title: "", assignedTo: "", dueDate: "" });
-
-  const handleChange = (e) => {
-    setTask({ ...task, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!task.title || !task.assignedTo || !task.dueDate) {
-      alert("Please fill out all fields.");
-      return;
-    }
-    onSubmit(task); // Pass task data to parent component
-  };
-
+const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   return (
-    <form className="flex flex-col bg-[black] border border-[#8357DA] w-[450px] h-[320px] p-6 shadow-lg rounded-lg " onSubmit={handleSubmit}>
-      <h2 className="text-2xl font-bold mb-4 underline text-center text-[#8357DA]">Task Form</h2>
-      <input
-        className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb] ml-[80px]"
-        type="text"
-        name="title"
-        placeholder="Task Title"
-        value={task.title}
-        onChange={handleChange}
-        required
-      />
-      <input
-        className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb] ml-[80px] mt-[20px]"
-        type="text"
-        name="assignedTo"
-        placeholder="Assign to (e.g., John Doe)"
-        value={task.assignedTo}
-        onChange={handleChange}
-        required
-      />
-      <input
-        className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb] ml-[80px] mt-[20px]"
-        type="date"
-        name="dueDate"
-        value={task.dueDate}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit" className="bg-[black] hover:text-[#ffffff] text-[#8357DA] border border-[#8357DA] pointer bold py-2 w-[150px] h-[45px] ml-[160px] hover:bg-[#8357DA] mt-[20px]">
-        Submit Task
+    <>
+      {/* Overlay (Appears when navbar is open) */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setIsSidebarOpen(false)} // Clicking outside closes navbar
+        ></div>
+      )}
+
+      {/* Sidebar */}
+      <div className={`fixed left-0 top-0 h-screen w-[220px] bg-gray-700 text-white p-4 transition-transform duration-300 z-50 
+        ${isSidebarOpen ? "translate-x-0" : "translate-x-[-100%] md:translate-x-0"}`}>
+        
+        {/* Close Button (Mobile Only) */}
+        <button 
+          className="md:hidden text-white text-2xl absolute right-4 top-4"
+          onClick={() => setIsSidebarOpen(false)}
+        >
+          <FaTimes />
+        </button>
+
+        {/* Sidebar Menu */}
+        <h1 className="text-2xl font-bold mb-4 p-2 rounded bg-gray-600 text-[#8357DA]">TaskMe</h1>
+        <ul className="space-y-3">
+          <li><Link to="/dashboard" className="block p-2 hover:bg-gray-600 rounded">Dashboard</Link></li>
+          <li><Link to="/task" className="block p-2 hover:bg-gray-600 rounded">Tasks</Link></li>
+          <li><Link to="/completed" className="block p-2 hover:bg-gray-600 rounded">Completed</Link></li>
+          <li><Link to="/progress" className="block p-2 hover:bg-gray-600 rounded">In Progress</Link></li>
+          <li><Link to="/team" className="block p-2 hover:bg-gray-600 rounded">Team</Link></li>
+          <li><Link to="/settings" className="block p-2 hover:bg-gray-600 rounded">Settings</Link></li>
+        </ul>
+      </div>
+
+      {/* Menu Button (Mobile) */}
+      <button 
+        className={`fixed top-4 left-4 md:hidden text-white text-2xl p-2 rounded-full z-50 transition-all duration-300 
+          ${isSidebarOpen ? "bg-gray-600" : "bg-gray-800" }`}
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? <FaTimes /> : <FaBars />}
       </button>
-    </form>
+    </>
   );
 };
 
-export default TaskForm;
-
-
+export default Navbar;

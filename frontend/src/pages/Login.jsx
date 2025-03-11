@@ -31,8 +31,8 @@ const Login = () => {
 };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ml-[500px] ">
-      <div className="bg-[black] w-[500px] h-[350px] p-8 rounded shadow-lg w-96 border border-[#8357DA]  ">
+    <div className=" flex flex-col items-center justify-center  bg-gray-100 ml-[500px] " >
+      <div className="bg-[white] w-[500px] h-[350px] p-8 rounded shadow-lg w-96 border border-[#8357DA]  ">
         <h2 className="text-2xl font-bold mb-4 underline text-center text-[#8357DA]">Login</h2>
         <form className="flex flex-col ml-[98px]" onSubmit={handleLogin}>
         <label className="text-[#8357DA]">Email:</label>
@@ -53,7 +53,7 @@ const Login = () => {
             placeholder="Password"
             required
           />
-          <p className="text-[#e0e0eb] ml-[20px]">Don't Have An Account <a href="/register">Create Now</a></p>
+          <p className="text-[black] ml-[20px]">Don't Have An Account <a href="/register">Create Now</a></p>
           <button type="submit" className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[150px] h-[45px] ml-[70px] hover:bg-[#8357DA] mt-[20px]">
             Login
           </button>
