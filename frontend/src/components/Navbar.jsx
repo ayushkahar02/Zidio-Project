@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import TaskForm from "./TaskForm";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +39,10 @@ const Navbar = () => {
         <ul className="space-y-3">
           <li><Link to="/dashboard" className="block p-2 hover:bg-gray-700 rounded">Dashboard</Link></li>
           <li><Link to="/task" className="block p-2 hover:bg-gray-700 rounded">Tasks</Link></li>
-          <li><Link to="/completedtasks" className="block p-2 hover:bg-gray-700 rounded">Completed</Link></li>
+          
           {/* <li><Link to="/progress" className="block p-2 hover:bg-gray-700 rounded">In Progress</Link></li> */}
           <li><Link to="/team" className="block p-2 hover:bg-gray-700 rounded">Team</Link></li>
+          <li><Link to="/chatpage" className="block p-2 hover:bg-gray-700 rounded">Chat</Link></li>
           <li><Link to="/settings" className="block p-2 hover:bg-gray-700 rounded">Settings</Link></li>
         </ul>
       </div>

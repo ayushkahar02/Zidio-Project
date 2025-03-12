@@ -1,103 +1,115 @@
-import { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import TaskModel from "../components/TaskModel";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-const Dashboard = () => {
+const TaskManagementApp = () => {
   const [tasks, setTasks] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(savedTasks);
   }, []);
 
-  // Task Statistics
-  const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.progress === "Completed").length;
-  const inProgressTasks = tasks.filter((task) => task.progress === "In Progress").length;
-  const toDoTasks = totalTasks - (completedTasks + inProgressTasks);
+  
 
-  // Chart Data (Task Count by Priority)
+  const addTask = (newTask) => {
+    // Ensure the completed status is explicitly set
+    const updatedTask = { ...newTask, completed: newTask.completed ?? false };
+    const updatedTasks = [...tasks, updatedTask];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  };
+
   const priorityCounts = tasks.reduce((acc, task) => {
     acc[task.priority] = (acc[task.priority] || 0) + 1;
     return acc;
   }, {});
 
-  const chartData = Object.keys(priorityCounts).map((priority) => ({
-    name: priority,
-    total: priorityCounts[priority],
-  }));
+  const chartData = [
+    { name: "High", total: priorityCounts["HIGH"] || 0 },
+    { name: "Medium", total: priorityCounts["MEDIUM"] || 0 },
+    { name: "Normal", total: priorityCounts["NORMAL"] || 0 },
+    { name: "Low", total: priorityCounts["LOW"] || 0 },
+  ];
 
   return (
-    <div className="flex h-screen w-screen bg-gray-100 ">
-      {/* Fixed Sidebar */}
+    <div className="flex h-full w-screen bg-[black]">
       <Navbar />
+      <main className="flex-1 p-6 ml-[200px] ">
+        <h1 className="text-2xl font-bold text-[#8357DA]">Dashboard</h1>
 
-      {/* Main Content - Full Width, Scrollable */}
-      <div className="flex-1 overflow-y-auto p-6 ml-[50px]">
-       <div className="text-2xl font-bold text-[#8357DA] ml-[0px]">
-       <h1 >Dashboard</h1>
-       </div>
-
-        {/* Task Stats */}
-        <div className="grid grid-cols-4 gap-4 my-6 text-center text-gray-500">
-          <div className="bg-white p-4 rounded w-40 shadow border border-[#8357DA]">
-            <h3 className="text-lg font-semibold">Total Task</h3>
-            <p className="text-2xl">{totalTasks}</p>
+        <div className="grid grid-cols-3 gap-4 my-6 text-center w-[1500px]">
+          <div className="bg-white p-4 rounded shadow border border-[#8357DA]">
+            <h3 className="text-lg text-[white] font-semibold">Total Tasks</h3>
+            <p className="text-2xl text-[white]">{tasks.length}</p>
           </div>
-          <div className="bg-white p-4 w-40 rounded shadow border border-[#8357DA]">
-            <h3 className="text-lg font-semibold">Completed Task</h3>
-            <p className="text-2xl">{completedTasks}</p>
+          <div className="bg-white p-4 rounded shadow border border-[#8357DA]">
+            <h3 className="text-lg font-semibold text-[white]">Completed Tasks</h3>
+            <p className="text-2xl text-[white]"> {tasks.filter((task) => task.completed === true).length}</p>
           </div>
-          <div className="bg-white p-4 w-40 rounded shadow border border-[#8357DA]">
-            <h3 className="text-lg font-semibold">Task In Progress</h3>
-            <p className="text-2xl">{inProgressTasks}</p>
-          </div>
-          <div className="bg-white p-4 w-40 rounded shadow border border-[#8357DA]">
-            <h3 className="text-lg font-semibold">To-Dos</h3>
-            <p className="text-2xl">{toDoTasks}</p>
+          <div className="bg-white p-4 rounded shadow border border-[#8357DA]">
+            <h3 className="text-lg text-[white] font-semibold">Tasks In Progress</h3>
+            <p className="text-2xl text-[white]">  {tasks.filter((task) => task.completed === false).length}</p>
           </div>
         </div>
 
-        {/* Chart by Priority */}
-        <div className="bg-white p-6 rounded shadow mb-6">
-          <h3 className="text-lg font-semibold mb-4 text-gray-500">Chart by Priority</h3>
-          <ResponsiveContainer width="40%" height={250}>
+        <div className="bg-white p-6 rounded shadow mb-6 mt-[100px] w-[1500px]">
+          <h3 className="text-lg text-[white] font-semibold mb-4">Chart by Priority</h3>
+          <ResponsiveContainer width="100%" height={250}>
             <BarChart data={chartData}>
-              <XAxis dataKey="name" className="text-gray-500" />
-              <YAxis className="text-gray-500" />
+              <XAxis dataKey="name" />
+              <YAxis />
               <Tooltip />
               <Bar dataKey="total" fill="#8884d8" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        {/* Task List */}
-        <div className="bg-white p-6 rounded shadow">
-          <h3 className="text-lg font-semibold mb-4 text-gray-500">Task List</h3>
-          <table className="w-full border-collapse border border-gray-300">
-            <thead className="border border-[#8357DA]">
-              <tr className="h-[70px]">
-                <th className="p-2 text-gray-500 border border-[#8357DA]">Task Title</th>
-                <th className="p-2 text-gray-500 border border-[#8357DA]">Priority</th>
-                <th className="p-2 text-gray-500 border border-[#8357DA]">Progress</th>
-                <th className="p-2 text-gray-500 border border-[#8357DA]">Created At</th>
+        {/* <button onClick={() => setIsModalOpen(true)} className="bg-black text-[#8357DA] border border-[#8357DA] py-2 px-4">
+          + Create Task
+        </button> */}
+         <h3 className="text-lg font-semibold mb-4 text-[white] mt-[80px]">Task List</h3>
+        <div className="grid grid-cols-3 gap-4 ">
+          {/* {tasks.map((task, index) => ( */}
+          
+            <div className="bg-white p-4 rounded text-[white] w-[1200px]">
+              <table className="w-full border-collapse border border-gray-300 ">
+              <thead className="border border-[#8357DA]">
+              <tr className=" h-[70px] ">
+                <th className="p-2  text-[white] border border-[#8357DA]">Task Title</th>
+                <th className="p-2  text-[white] border border-[#8357DA]">User Name</th>
+               <th className="p-2  text-[white] border border-[#8357DA]">Priority</th>
+              <th className="p-2 text-[white] border border-[#8357DA]">Progress</th>
               </tr>
-            </thead>
-            <tbody className="border border-[#8357DA]">
-              {tasks.map((task, index) => (
-                <tr key={index} className="text-center text-gray-500 h-[70px]">
-                  <td className="p-2 border border-[#8357DA]">{task.title}</td>
+          </thead>
+          <tbody className="border border-[#8357DA]">
+          {tasks.map((task, index) => (
+          <tr key={task.id} className="text-center text-[white] h-[70px]">
+                  <td className="text-lg font-semibold text-[white] border border-[#8357DA]">{task.title}</td>       
+                  <td className="p-2 border border-[#8357DA]">{task.user}</td>            
                   <td className="p-2 border border-[#8357DA]">{task.priority}</td>
-                  <td className="p-2 border border-[#8357DA]">{task.progress}</td>
-                  <td className="p-2 border border-[#8357DA]">{task.date}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  <td className="p-2 border border-[#8357DA]">{task.completed ? "Completed" : "In Progress"}</td>
+              </tr>
+           ))}
+          </tbody>
+
+              </table>
+              
+           </div>
+          
         </div>
-      </div>
+        <br></br><br></br><br></br><br></br>
+      </main>
+      {isModalOpen && <TaskModel onClose={() => setIsModalOpen(false)} onSubmit={addTask} />}
+      
     </div>
+   
   );
 };
 
-export default Dashboard;
+export default TaskManagementApp;
+
+
+
