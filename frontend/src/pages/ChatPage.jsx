@@ -43,31 +43,29 @@ const ChatPage = () => {
     localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
   };
 
-
-
-
   return (
-    <div className="flex h-screen w-screen bg-[black]">
+    <div className="flex h-screen w-screen ">
       <Navbar />
-      <div className="flex flex-col ml-[100px] w-[1000px] mt-[50px] p-4 bg-white rounded shadow border border-[#8357DA] h-[570px] ml-[200px]">
-        <h2 className="text-2xl font-bold underline  text-[#8357DA] ml-[450px] ">Chat</h2>
+      <div className="flex flex-col  w-[1000px] mt-[50px] p-4 bg-[white] rounded shadow border border-[#ce30b6] h-[570px] ml-[250px] mt-[100px]">
+        <h2 className="text-[30px] font-bold underline  text-[#ce30b6] ml-[450px] ">Chat</h2>
+        <hr className="w-full text-[#ce30b6]" />
       
         {/* Chat Messages */}
         <div className="h-[400px] overflow-y-auto p-4 my-4">
           {messages.length > 0 ? (
             messages.map((msg) => (
-              <div key={msg.id} className="mb-2 border border-b-[#8357DA] flex justify-between items-center p-2">
+              <div key={msg.id} className="mb-2 border border-[#ce30b6] flex justify-between items-center p-2">
                 <div>
-                  <span className="font-bold text-[#8357DA] ">{msg.user}:</span>
-                  <span className="ml-2 text-[white]"> {msg.text}</span>
-                  <span className="text-gray-500 text-[white] text-sm"> <sub>({msg.timestamp})</sub> </span>
+                  <span className="font-bold text-[black] text-[18px] ">{msg.user}:</span>
+                  <span className="ml-2 text-[black] text-[18px]"> {msg.text}</span>
+                  <span className="text-[18px] text-[#ce30b6] text-sm"> <sub>({msg.timestamp})</sub> </span>
                 </div>
             
 
                 {msg.user === userName && (
                   <button
                     onClick={() => deleteMessage(msg.id, msg.user)}
-                    className="ml-[320px] bg-[black] text-red-500 border hover:border-[#8357DA]"
+                    className=" bg-[white] ml-[320px] text-red-500 border hover:border-[#ce30b6]"
                   >
                      🗑️
                   </button>
@@ -75,7 +73,7 @@ const ChatPage = () => {
               </div>
             ))
           ) : (
-            <p className="text-[white]">No messages yet.</p>
+            <p className="text-[black] text-[18px]">No messages yet.</p>
           )}
         </div>
         
@@ -85,18 +83,18 @@ const ChatPage = () => {
           placeholder="Your Name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="border p-2 mb-3 w-[995px] h-[40px] bg-[#e0e0eb]"
+          className="border p-2 mb-3 w-[995px] h-[40px] bg-[#f7e6f4] text-[18px]"
         />
 
         <input
           placeholder="Type a message..."
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          className="border p-2 mb-3 w-[995px] h-[40px] bg-[#e0e0eb]"
+          className="border p-2 mb-3 w-[995px] h-[40px] bg-[#f7e6f4] text-[18px]"
         />
         <button
           onClick={sendMessage}
-          className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[1000px] h-[45px] hover:bg-[#8357DA]"
+          className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] pointer bold py-2 w-[1000px] h-[45px] hover:bg-[#ce30b6] text-[18px]"
         >
           Send
         </button>

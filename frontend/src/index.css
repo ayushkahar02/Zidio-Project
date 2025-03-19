@@ -19,7 +19,9 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  /* color: #f7e6f4;  */
+  /* color: #ce30b6; */
+  color: #646cff;     
   text-decoration: inherit;
 }
 a:hover {

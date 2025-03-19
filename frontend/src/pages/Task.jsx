@@ -27,49 +27,50 @@ const TasksPage = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen bg-[black]">
+    <div className="flex h-screen w-screen ">
       <Navbar />
-      <div className="flex flex-col ml-[100px] w-[1200px] mt-[50px]">
+      <div className="flex flex-col ml-[200px] w-[1200px] mt-[50px]">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-[30px] font-bold text-[#8357DA]">Tasks</h2>
+          <h2 className="text-[30px] font-bold text-[#ce30b6]">Tasks</h2>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] py-2 w-[170px] h-[50px] hover:bg-[#8357DA]"
+            className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] py-2 w-[170px] h-[50px] hover:bg-[#ce30b6]"
           >
             + Add Task
           </button>
         </div>
 
         {/* Task Board */}
-        <div className="grid grid-cols-3 gap-[20px] mt-6">
+        <div className="grid grid-cols-3 gap-[20px] mt-6 ">
           {tasks.length > 0 ? (
             tasks.map((task) => (
               <div
                 key={task.id}
-                className="bg-white p-4 rounded shadow border border-[#8357DA]"
+                className="bg-white p-4 rounded shadow border border-[#ce30b6] bg-[white]"
               >
                 <p
-                  className={`text-[white] ml-[130px] text-sm ${
-                    task.priority === "HIGH" ? "text-red-500" : "text-gray-700"
+                  className={`text-[#ce30b6] ml-[130px] text-[18px] bold ${
+                    task.priority === "HIGH" ? "text-[red]" : "text-[#ce30b6]"
                   }`}
                 >
                   {task.priority} PRIORITY
                 </p>
-                <h4 className="text-lg ml-[10px] text-[white] font-semibold">
-                  User Name: {task.user}
-                </h4>
-                <h2 className="text-lg ml-[10px] text-[white] font-semibold">
+                
+                <h2 className="text-lg ml-[10px] text-[black] font-semibold">
                   Task Title: {task.title}
                 </h2>
-                <p className="text-sm ml-[10px] text-[white] text-gray-600">
+                <p className="text-[18px] ml-[10px] text-[black] font-semibold">
+                  User Name: {task.user}
+                </p>
+                <p className="text-[18px] ml-[10px] text-[black] text-gray-600">
                   Date: {task.date}
                 </p>
-                <p className="text-sm ml-[10px] text-[white] text-gray-600">
+                <p className="text-[18px] ml-[10px] text-[black] text-gray-600">
                   Progress: {task.progress}
                 </p>
                 <button
                   onClick={() => deleteTask(task.id)}
-                  className="ml-[320px] bg-[black] text-red-500 border hover:border-[#8357DA]"
+                  className="ml-[322px] bg-[white] text-red-500 border hover:border-[#ce30b6]"
                 >
                   🗑️
                 </button>

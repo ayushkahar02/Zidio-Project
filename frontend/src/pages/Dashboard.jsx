@@ -35,34 +35,34 @@ const TaskManagementApp = () => {
   ];
 
   return (
-    <div className="flex h-full w-screen bg-[black]">
+    <div className="flex h-full w-screen ">
       <Navbar />
       <main className="flex-1 p-6 ml-[200px] ">
-        <h1 className="text-2xl font-bold text-[#8357DA]">Dashboard</h1>
+        <h1 className="text-2xl font-bold text-[#ce30b6]">Dashboard</h1>
 
-        <div className="grid grid-cols-3 gap-4 my-6 text-center w-[1500px]">
-          <div className="bg-white p-4 rounded shadow border border-[#8357DA]">
-            <h3 className="text-lg text-[white] font-semibold">Total Tasks</h3>
-            <p className="text-2xl text-[white]">{tasks.length}</p>
+        <div className="grid grid-cols-3 gap-[200px] my-6 text-center w-[1300px]">
+          <div className="bg-[white] p-4 rounded shadow border border-[#ce30b6]">
+            <h3 className="text-lg text-[black] font-semibold">Total Tasks</h3>
+            <p className="text-[20px] text-[#ce30b6] ">{tasks.length}</p>
           </div>
-          <div className="bg-white p-4 rounded shadow border border-[#8357DA]">
-            <h3 className="text-lg font-semibold text-[white]">Completed Tasks</h3>
-            <p className="text-2xl text-[white]"> {tasks.filter((task) => task.completed === true).length}</p>
+          <div className="bg-[white] p-4 rounded shadow border border-[#ce30b6]">
+            <h3 className="text-lg font-semibold text-[black]">Completed Tasks</h3>
+            <p className="text-[20px] text-[#ce30b6]"> {tasks.filter((task) => task.completed === true).length}</p>
           </div>
-          <div className="bg-white p-4 rounded shadow border border-[#8357DA]">
-            <h3 className="text-lg text-[white] font-semibold">Tasks In Progress</h3>
-            <p className="text-2xl text-[white]">  {tasks.filter((task) => task.completed === false).length}</p>
+          <div className="bg-[white] p-4 rounded shadow border border-[#ce30b6]">
+            <h3 className="text-lg text-[black] font-semibold">Tasks In Progress</h3>
+            <p className="text-[20px] text-[#ce30b6]">  {tasks.filter((task) => task.completed === false).length}</p>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded shadow mb-6 mt-[100px] w-[1500px]">
-          <h3 className="text-lg text-[white] font-semibold mb-4">Chart by Priority</h3>
+        <div className="bg-[white] text-[20px] p-6 rounded shadow mb-6 mt-[100px] w-[1300px] h-[350px]">
+          <h3 className="text-[20px] ml-[10px] mt-[10px]  text-[black] font-semibold mb-4">Chart by Priority</h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={chartData}>
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="total" fill="#8884d8" />
+              <Bar dataKey="total" fill="#ce30b6" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -70,27 +70,27 @@ const TaskManagementApp = () => {
         {/* <button onClick={() => setIsModalOpen(true)} className="bg-black text-[#8357DA] border border-[#8357DA] py-2 px-4">
           + Create Task
         </button> */}
-         <h3 className="text-lg font-semibold mb-4 text-[white] mt-[80px]">Task List</h3>
+         <h3 className="text-[25px] font-semibold mb-4 text-[black] mt-[80px]">Task List</h3>
         <div className="grid grid-cols-3 gap-4 ">
           {/* {tasks.map((task, index) => ( */}
           
-            <div className="bg-white p-4 rounded text-[white] w-[1200px]">
+            <div className="bg-[white] p-4 rounded text-[#ce30b6] w-[1200px]">
               <table className="w-full border-collapse border border-gray-300 ">
-              <thead className="border border-[#8357DA]">
+              <thead className="border border-[#ce30b6]">
               <tr className=" h-[70px] ">
-                <th className="p-2  text-[white] border border-[#8357DA]">Task Title</th>
-                <th className="p-2  text-[white] border border-[#8357DA]">User Name</th>
-               <th className="p-2  text-[white] border border-[#8357DA]">Priority</th>
-              <th className="p-2 text-[white] border border-[#8357DA]">Progress</th>
+                <th className="p-2  text-[20px] text-[black] border border-[#ce30b6]">Task Title</th>
+                <th className="p-2 text-[20px]  text-[black] border border-[#ce30b6]">User Name</th>
+               <th className="p-2 text-[20px] text-[black] border border-[#ce30b6]">Priority</th>
+              <th className="p-2 text-[20px] text-[black] border border-[#ce30b6]">Progress</th>
               </tr>
           </thead>
-          <tbody className="border border-[#8357DA]">
+          <tbody className="border border-[#ce30b6]">
           {tasks.map((task, index) => (
-          <tr key={task.id} className="text-center text-[white] h-[70px]">
-                  <td className="text-lg font-semibold text-[white] border border-[#8357DA]">{task.title}</td>       
-                  <td className="p-2 border border-[#8357DA]">{task.user}</td>            
-                  <td className="p-2 border border-[#8357DA]">{task.priority}</td>
-                  <td className="p-2 border border-[#8357DA]">{task.completed ? "Completed" : "In Progress"}</td>
+          <tr key={task.id} className="text-center text-[black] h-[70px]">
+                  <td className="text-[18px] font-semibold text-[black] border border-[#ce30b6]">{task.title}</td>       
+                  <td className=" text-[18px] p-2 border border-[#ce30b6]">{task.user}</td>            
+                  <td className=" text-[18px] p-2 border border-[#ce30b6]">{task.priority}</td>
+                  <td className="text-[18px] p-2 border border-[#ce30b6]">{task.completed ? "Completed" : "In Progress"}</td>
               </tr>
            ))}
           </tbody>

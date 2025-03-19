@@ -33,12 +33,12 @@ const Register = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ml-[650px]">
-      <div className="bg-[black] w-[500px] h-[450px] p-8 rounded shadow-lg w-96 border border-[#8357DA]">
-        <h2 className="text-2xl font-bold mb-4 underline text-center text-[#8357DA]">Registration</h2>
+      <div className="bg-[white] w-[500px] h-[450px] p-8 rounded shadow-lg w-96 border border-[#ce30b6]">
+        <h2 className="text-2xl font-bold mb-4 underline text-center text-[#ce30b6]">Registration</h2>
         <form className="flex flex-col ml-[98px]" onSubmit={handleRegister}>
-          <label className="text-[#8357DA]">Name:</label>
+          <label className="text-[#ce30b6] text-[18px]">Name:</label>
           <input
-            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb] text-[#000000]"
+            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#f7e6f4] text-[#000000]"
             type="text"  // Fixed input type
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -46,9 +46,9 @@ const Register = () => {
             required
           />
 
-          <label className="text-[#8357DA] mt-[20px]">Email:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[18px]">Email:</label>
           <input
-            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb] text-[#000000]"
+            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#f7e6f4] text-[#000000]"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -56,9 +56,9 @@ const Register = () => {
             required
           />
 
-          <label className="text-[#8357DA] mt-[20px]">Password:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[18px]">Password:</label>
           <input
-            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb] text-[#000000]"
+            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#f7e6f4] text-[#000000]"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -66,11 +66,11 @@ const Register = () => {
             required
           />
 
-          <p className="text-[#e0e0eb] ml-[20px]">
-            Back To Login Page <a href="/login">Click Here</a>
+          <p className="text-[#ce30b6] ml-[20px] text-[18px]">
+            Back To Login Page <a href="/login" className="text-[#ce30b6] underline ">Click Here</a>
           </p>
 
-          <button type="submit" className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[150px] h-[45px] ml-[70px] hover:bg-[#8357DA] mt-[20px]">
+          <button type="submit" className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] pointer bold py-2 w-[150px] h-[45px] ml-[70px] hover:bg-[#ce30b6] mt-[20px] text-[18px]">
             Register
           </button>
         </form>

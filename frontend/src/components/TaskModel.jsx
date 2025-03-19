@@ -30,43 +30,43 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[black] border border-[#8357DA] bg-opacity-50 ml-[650px] mt-[200px]">
-      <div className="bg-white p-6 rounded shadow-lg h-[590px] w-[450px]">
-        <h2 className="text-lg font-bold ml-[170px] mb-4 text-[#8357DA]">Add Task</h2>
+    <div className="fixed inset-0 flex items-center justify-center bg-[white] border border-[#ce30b6] bg-opacity-50 ml-[700px] mt-[200px]">
+      <div className="bg-white p-6 rounded shadow-lg h-[620px] w-[450px]">
+        <h2 className="text-lg font-bold underline ml-[170px] mb-4 text-[#ce30b6]">Add Task</h2>
         <form onSubmit={handleSubmit} className="flex flex-col ml-[50px] ">
-          <label className="text-[#8357DA]">Task Title:</label>
+          <label className="text-[#ce30b6] text-[18px]">Task Title:</label>
           <input
             type="text"
             name="title"
             placeholder="Task Title"
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#f7e6f4]"
             onChange={handleChange}
             required
           />
 
-          <label className="text-[#8357DA]">User Name:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[18px]">User Name:</label>
           <input
             type="text"
             name="user"
             placeholder="User Name"
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#f7e6f4]"
             onChange={handleChange}
             required
           />
 
-          <label className="text-[#8357DA] mt-[20px]">Date:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[18px]">Date:</label>
           <input
             type="date"
             name="date"
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#f7e6f4]"
             onChange={handleChange}
             required
           />
 
-          <label className="text-[#8357DA] mt-[20px]">Priority:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[18px]">Priority:</label>
           <select
             name="priority"
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#f7e6f4]"
             onChange={handleChange}
           >
             <option value="LOW">Low</option>
@@ -74,10 +74,10 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             <option value="HIGH">High</option>
           </select>
 
-          <label className="text-[#8357DA] mt-[20px]">Progress:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[18px]">Progress:</label>
           <select
             name="progress"
-            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[350px] h-[40px] bg-[#f7e6f4]"
             onChange={handleChange}
           >
             <option value="Not Started">Not Started</option>
@@ -86,10 +86,10 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
           </select>
 
           <div className="flex mt-[50px] ml-[130px]">
-            <button type="submit" className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[100px] h-[45px] hover:bg-[#8357DA] ">
+            <button type="submit" className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] pointer bold py-2 w-[100px] h-[45px] hover:bg-[#ce30b6] text-[18px] ">
               Add
             </button>
-            <button type="button" className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[100px] h-[45px] hover:bg-[#8357DA] ml-[20px]" onClick={onClose}>
+            <button type="button" className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] pointer bold py-2 w-[100px] h-[45px] hover:bg-[#ce30b6] ml-[20px] text-[18px]" onClick={onClose}>
               Cancel
             </button>
          </div>

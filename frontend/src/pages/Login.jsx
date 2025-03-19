@@ -25,33 +25,33 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ml-[650px] ">
-      <div className="bg-[black] w-[500px] h-[350px] p-8 rounded shadow-lg w-96 border border-[#8357DA] ">
-        <h2 className="text-2xl font-bold mb-4 underline text-center text-[#8357DA]">Login</h2>
+      <div className="bg-[white] w-[500px] h-[370px] p-8 rounded shadow-lg w-96 border border-[#ce30b6] ">
+        <h2 className="text-2xl font-bold mb-4 underline text-center text-[#ce30b6]">Login</h2>
         <form className="flex flex-col ml-[98px]" onSubmit={handleLogin}>
-          <label className="text-[#8357DA]">Email:</label>
+          <label className="text-[#ce30b6] text-[20px]">Email:</label>
           <input
-            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#f7e6f4]"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
           />
-          <label className="text-[#8357DA] mt-[20px]">Password:</label>
+          <label className="text-[#ce30b6] mt-[20px] text-[20px]">Password:</label>
           <input
-            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#e0e0eb]"
+            className="border p-2 mb-3 w-[300px] h-[30px] bg-[#f7e6f4]"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
           />
-          <p className="text-[#e0e0eb] ml-[20px]">
-            Don't Have An Account <a href="/register">Create Now</a>
+          <p className="text-[#ce30b6] ml-[20px] text-[18px]">
+            Don't Have An Account <a href="/register"  className="text-[#ce30b6] underline " >Create Now</a>
           </p>
           <button 
             type="submit" 
-            className="bg-[black] text-[#8357DA] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[150px] h-[45px] ml-[70px] hover:bg-[#8357DA] mt-[20px]"
+            className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] pointer bold py-2 w-[150px] h-[45px] ml-[70px] hover:bg-[#ce30b6] mt-[20px] text-[18px]"
           >
             Login
           </button>
