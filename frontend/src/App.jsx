@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Task from "./pages/Task";
 import CompletedTasks from "./pages/CompletedTasks";
+import Team from "./pages/Team";
 
 
 
