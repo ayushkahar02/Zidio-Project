@@ -47,7 +47,7 @@ const TasksPage = () => {
           <h2 className="text-2xl font-bold text-[#8357DA]">Tasks Management</h2>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-white text-[#8357DA] hover:text-white border border-[#8357DA] py-2 w-[170px] h-[50px] hover:bg-[#8357DA]"
+            className="bg-white text-[#000000] hover:text-white border border-[#8357DA] py-2 w-[170px] h-[50px] hover:bg-[#8357DA]"
           >
             + Create Task
           </button>

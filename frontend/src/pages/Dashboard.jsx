@@ -12,9 +12,9 @@ const Dashboard = () => {
 
   // Task Statistics
   const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.progress === "Completed").length;
-  const inProgressTasks = tasks.filter((task) => task.progress === "In Progress").length;
-  const toDoTasks = totalTasks - (completedTasks + inProgressTasks);
+  const completedTasks = tasks.filter((task) => task.progress === "completed").length;
+  const inProgressTasks = tasks.filter((task) => task.progress === "in-progress").length;
+  const toDoTasks = totalTasks - completedTasks;
 
   // Chart Data (Task Count by Priority)
   const priorityCounts = tasks.reduce((acc, task) => {
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
       {/* Main Content - Full Width, Scrollable */}
       <div className="flex-1 overflow-y-auto p-6 ml-[50px]">
-       <div className="text-2xl font-bold text-[#8357DA] ml-[0px]">
+       <div className="text-2xl font-bold text-[#8357DA] ">
        <h1 >Dashboard</h1>
        </div>
 
