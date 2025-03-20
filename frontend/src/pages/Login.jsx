@@ -9,6 +9,19 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (email === "admin@example.com" && password === "admin123") {
+      localStorage.setItem("token", "mockToken");
+      localStorage.setItem("role", "admin"); // Admin role
+      navigate("/dashboard");
+    } else if (email && password) {
+      localStorage.setItem("token", "mockToken");
+      localStorage.setItem("role", "user"); // User role
+      navigate("/dashboard");
+    } else {
+      alert("Invalid email or password");
+    }
+  
     
     try {
       const response = await fetch("http://localhost:8080/api/auth/login", {

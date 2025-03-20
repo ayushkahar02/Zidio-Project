@@ -47,7 +47,7 @@ const ChatPage = () => {
     <div className="flex h-screen w-screen ">
       <Navbar />
       <div className="flex flex-col  w-[1000px] mt-[50px] p-4 bg-[white] rounded shadow border border-[#ce30b6] h-[570px] ml-[250px] mt-[100px]">
-        <h2 className="text-[30px] font-bold underline  text-[#ce30b6] ml-[450px] ">Chat</h2>
+        <h2 className="text-[30px] font-bold underline  text-[#8357DA] ml-[450px] ">Chat</h2>
         <hr className="w-full text-[#ce30b6]" />
       
         {/* Chat Messages */}
@@ -83,18 +83,18 @@ const ChatPage = () => {
           placeholder="Your Name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="border p-2 mb-3 w-[995px] h-[40px] bg-[#f7e6f4] text-[18px]"
+          className="border p-2 mb-3 w-[971px] h-[40px] bg-[#f7e6f4] text-[18px] text-[black]"
         />
 
         <input
           placeholder="Type a message..."
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          className="border p-2 mb-3 w-[995px] h-[40px] bg-[#f7e6f4] text-[18px]"
+          className="border p-2 mb-3 w-[971px] h-[40px] bg-[#f7e6f4] text-[18px] text-[black]"
         />
         <button
           onClick={sendMessage}
-          className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#ce30b6] pointer bold py-2 w-[1000px] h-[45px] hover:bg-[#ce30b6] text-[18px]"
+          className="bg-[white] text-[#ce30b6] hover:text-[#ffffff] border border-[#8357DA] pointer bold py-2 w-[971px] h-[45px] hover:bg-[#8357DA] text-[18px]"
         >
           Send
         </button>

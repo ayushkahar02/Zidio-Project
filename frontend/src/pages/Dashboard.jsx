@@ -34,7 +34,7 @@ const Dashboard = () => {
 
       {/* Main Content - Full Width, Scrollable */}
       <div className="flex-1 overflow-y-auto p-6 ml-[50px]">
-       <div className="text-2xl font-bold text-[#8357DA] ml-[0px]">
+       <div className="text-2xl font-bold text-[#8357DA] ">
        <h1 >Dashboard</h1>
        </div>
 
