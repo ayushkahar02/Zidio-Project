@@ -12,9 +12,9 @@ const Dashboard = () => {
 
   // Task Statistics
   const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.progress === "Completed").length;
-  const inProgressTasks = tasks.filter((task) => task.progress === "In Progress").length;
-  const toDoTasks = totalTasks - (completedTasks + inProgressTasks);
+  const completedTasks = tasks.filter((task) => task.progress === "completed").length;
+  const inProgressTasks = tasks.filter((task) => task.progress === "in-progress").length;
+  const toDoTasks = totalTasks - completedTasks;
 
   // Chart Data (Task Count by Priority)
   const priorityCounts = tasks.reduce((acc, task) => {
