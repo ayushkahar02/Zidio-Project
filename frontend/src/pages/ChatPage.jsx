@@ -1,3 +1,4 @@
+//original
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 
@@ -81,14 +82,14 @@ const ChatPage = () => {
             placeholder="Your Name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] "style={{color:"black"}}
+            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] text-[black]"
           />
 
           <input
             placeholder="Type a message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] "style={{color:"black"}}
+            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] text-[black]"
           />
 
           <button
