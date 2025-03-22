@@ -33,7 +33,7 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <li><Link to="/completed" className="block p-2 hover:bg-gray-600 rounded">Completed</Link></li>
           <li><Link to="/progress" className="block p-2 hover:bg-gray-600 rounded">In Progress</Link></li>
           <li><Link to="/team" className="block p-2 hover:bg-gray-600 rounded">Team</Link></li>
-          <li><Link to="/settings" className="block p-2 hover:bg-gray-600 rounded">Settings</Link></li>
+          {/* <li><Link to="/settings" className="block p-2 hover:bg-gray-600 rounded">Settings</Link></li> */}
         </ul>
       </div>
 

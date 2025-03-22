@@ -43,7 +43,7 @@ const Navbar = () => {
           {/* <li><Link to="/progress" className="block p-2 hover:bg-gray-700 rounded">In Progress</Link></li> */}
           <li><Link to="/team" className="block p-2 hover:bg-gray-700 rounded">Team</Link></li>
           <li><Link to="/chatpage" className="block p-2 hover:bg-gray-700 rounded">Chat</Link></li>
-          <li><Link to="/settings" className="block p-2 hover:bg-gray-700 rounded">Settings</Link></li>
+          {/* <li><Link to="/settings" className="block p-2 hover:bg-gray-700 rounded">Settings</Link></li> */}
         </ul>
       </div>
 

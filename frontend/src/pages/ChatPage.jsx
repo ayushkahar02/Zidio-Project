@@ -59,11 +59,11 @@ const ChatPage = () => {
                     <span className="ml-2 text-[black] text-[18px]">{msg.text}</span>
                     <span className="text-[18px] text-[#8357DA] text-sm"><sub>({msg.timestamp})</sub></span>
                   </div>
-
                   {msg.user === userName && (
                     <button
                       onClick={() => deleteMessage(msg.id, msg.user)}
-                      className="bg-[white] ml-4 text-red-500 border hover:border-[#8357DA]"
+                      className="bg-[white] text-red-500 border hover:border-[#8357DA] ml-4"
+                      style={{ color: "red" }}
                     >
                       🗑️
                     </button>
@@ -81,14 +81,14 @@ const ChatPage = () => {
             placeholder="Your Name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] text-[black]"
+            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] "style={{color:"black"}}
           />
 
           <input
             placeholder="Type a message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] text-[black]"
+            className="border p-2 mb-3 w-full h-[40px] bg-[#f7e6f4] text-[18px] "style={{color:"black"}}
           />
 
           <button
