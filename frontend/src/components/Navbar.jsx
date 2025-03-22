@@ -55,6 +55,8 @@ const Navbar = () => {
       >
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
+
+      
     </>
   );
 };
