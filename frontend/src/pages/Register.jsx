@@ -32,8 +32,8 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ml-[650px]">
-      <div className="bg-[black] w-[500px] h-[450px] p-8 rounded shadow-lg w-96 border border-[#8357DA]">
+    <div className="flex flex-col items-center justify-center h-screen ml-[500px]">
+      <div className="bg-[white] w-[500px] h-[450px] p-8 rounded shadow-lg w-96 border border-[#8357DA]">
         <h2 className="text-2xl font-bold mb-4 underline text-center text-[#8357DA]">Registration</h2>
         <form className="flex flex-col ml-[98px]" onSubmit={handleRegister}>
           <label className="text-[#8357DA]">Name:</label>
@@ -66,7 +66,7 @@ const Register = () => {
             required
           />
 
-          <p className="text-[#e0e0eb] ml-[20px]">
+          <p className="text-[#000000] ml-[20px] ">
             Back To Login Page <a href="/login">Click Here</a>
           </p>
 
